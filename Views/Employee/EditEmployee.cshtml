@@ -1,0 +1,19 @@
+﻿@model MVCTaskProject.Models.Employee
+
+@{
+    ViewBag.Title = "EditEmployee";
+}
+
+<h2 style="text-align:center;background-color:yellowgreen;color:orangered">Update Employee</h2>
+@using (Html.BeginForm("UpdateEmployee", "Employee", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div>@Html.LabelFor(E => E.EmployeeId)<br />@Html.TextBoxFor(E => E.EmployeeId, new { @readonly = "true" })</div>
+    <div>@Html.LabelFor(E => E.Name)<br />@Html.TextBoxFor(E => E.Name)</div>
+    <div>@Html.LabelFor(E => E.Address)<br />@Html.TextBoxFor(E => E.Address)</div>    
+    <div>@Html.LabelFor(E => E.DepartmentId)<br />@Html.DropDownList("DepartmentId")</div>
+    <div>
+        <input type="submit" value="Update" name="btnUpdate" />
+        @Html.ActionLink("Cancel", "DisplayEmployees")
+    </div>
+}
+

@@ -1,0 +1,17 @@
+﻿@model  MVCTaskProject.Models.Department
+@{
+    ViewBag.Title = "EditDepartment";
+}
+
+<h2 style="text-align:center;background-color:yellowgreen;color:orangered">Update Department</h2>
+@using (Html.BeginForm("UpdateDepartment", "Department"))
+{
+    <div>
+        @Html.LabelFor(C => C.DepartmentId)<br />@Html.TextBoxFor(C => C.DepartmentId, new { @readonly = "true" })
+    </div>
+    <div>@Html.LabelFor(C => C.DepartmentName)<br />@Html.TextBoxFor(C => C.DepartmentName)</div>
+    <div>
+        <input type="submit" value="Save" name="btnSave" />
+        @Html.ActionLink("Cancel", "DisplayDepartments")
+    </div>
+}

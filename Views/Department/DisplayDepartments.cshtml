@@ -1,0 +1,27 @@
+﻿
+@model IEnumerable<MVCTaskProject.Models.Department>
+@{
+    ViewBag.Title = "Display Departments";
+}
+<h2 style="text-align:center;background-color:yellowgreen;color:orangered">Departments List</h2>
+<table border="1" align="center">
+    <tr>
+        <th>@Html.DisplayNameFor(D => D.DepartmentId)</th>
+        <th>@Html.DisplayNameFor(D => D.DepartmentName)</th>        
+        <th>Actions</th>
+    </tr>
+    @foreach (var department in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(C => department.DepartmentId)</td>
+            <td>@Html.DisplayFor(C => department.DepartmentName)</td>
+           
+            <td>
+                @Html.ActionLink("Edit", "EditDepartment", new { departmentId = department.DepartmentId })
+                @Html.ActionLink("Delete", "DeleteDepartment", new { departmentId = department.DepartmentId },
+                 new { onclick = "return confirm('Are you sure of deleting the record?')" })
+            </td>
+        </tr>
+    }
+    <tr><td colspan="4" align="center">@Html.ActionLink("Add New Department", "AddDepartment")</td></tr>
+</table>

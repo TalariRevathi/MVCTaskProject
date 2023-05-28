@@ -1,0 +1,16 @@
+﻿@model  MVCTaskProject.Models.Department
+@{
+    ViewBag.Title = "AddDepartment";
+}
+
+<h2 style="text-align:center;background-color:yellowgreen;color:orangered">Add Department</h2>
+
+@using (Html.BeginForm("AddDepartment", "Department"))
+{
+    <div>@Html.LabelFor(D => D.DepartmentName)<br />@Html.TextBoxFor(D => D.DepartmentName)</div>
+    <div>
+        <input type="submit" value="Save" name="btnSave" />
+        <input type="reset" value="Reset" name="btnReset" />
+    </div>
+}
+@Html.ActionLink("Back to Department Details", "DisplayDepartments")

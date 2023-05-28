@@ -1,0 +1,32 @@
+﻿@model IEnumerable<MVCTaskProject.Models.Employee>
+@{
+    ViewBag.Title = "Display Employees";
+}
+<h2 style="text-align:center;background-color:yellowgreen;color:orangered">Display Employees</h2>
+<table border="1" align="center">
+    <tr>
+        <th>@Html.DisplayNameFor(E => E.EmployeeId)</th>
+        <th>@Html.DisplayNameFor(E => E.Name)</th>
+        <th>@Html.DisplayNameFor(E => E.Address)</th>       
+        <th>@Html.DisplayNameFor(E => E.DepartmentId)</th>
+        <th>@Html.DisplayNameFor(E => E.Department.DepartmentName)</th>        
+        <th>Actions</th>
+    </tr>
+    @foreach (var Employee in Model)
+    {
+        <tr>
+            <td>@Html.DisplayFor(E => Employee.EmployeeId)</td>
+            <td>@Html.DisplayFor(E => Employee.Name)</td>
+            <td>@Html.DisplayFor(E => Employee.Address)</td>
+            <td>@Html.DisplayFor(E => Employee.DepartmentId)</td>
+            <td>@Html.DisplayFor(E => Employee.Department.DepartmentName)</td>          
+            <td>
+                @Html.ActionLink("View", "DisplayEmployee", new { employeeId = Employee.EmployeeId })
+                @Html.ActionLink("Edit", "EditEmployee", new { employeeId = Employee.EmployeeId })
+                @Html.ActionLink("Delete", "DeleteEmployee", new { employeeId = Employee.EmployeeId },
+                            new { onclick = "return confirm('Are you sure of deleting the record?')" })
+            </td>
+        </tr>
+    }
+    <tr><td colspan="9" align="center">@Html.ActionLink("Add New Employee", "AddEmployee")</td></tr>
+</table>
