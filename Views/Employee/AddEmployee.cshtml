@@ -3,9 +3,10 @@
 <h2 style="text-align:center;background-color:yellowgreen;color:orangered">Add New Product</h2>
 @using (Html.BeginForm("AddEmployee", "Employee", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
-    <div>@Html.LabelFor(E => E.Name)<br />@Html.TextBoxFor(E => E.Name  )</div>
+    <div>@Html.LabelFor(E => E.EmployeeId)<br />@Html.TextBoxFor(E => E.EmployeeId)</div>
+    <div>@Html.LabelFor(E => E.Name)<br />@Html.TextBoxFor(E => E.Name)</div>
     <div>@Html.LabelFor(E => E.Address)<br />@Html.TextBoxFor(E => E.Address)</div>
-    
+
     <div>@Html.Label("Department Name")<br />@Html.DropDownList("DepartmentId", "-Select Department-")</div>
     <div>
         <input type="submit" value="Save" name="btnSave" />

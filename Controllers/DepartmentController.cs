@@ -22,7 +22,7 @@ namespace MVCTaskProject.Controllers
         // GET: Departments
         public ViewResult DisplayDepartments()
         {
-            var departments = dc.Departments;
+            var departments = dc.Departments.ToList();
             return View(departments);
         }
         // GET: Add Department

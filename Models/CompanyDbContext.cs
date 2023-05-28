@@ -10,11 +10,23 @@ namespace MVCTaskProject.Models
     {
         public CompanyDbContext() : base("ConStr")
         {
-            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<CompanyDbContext>());
+            //Database.SetInitializer(new DropCreateDatabaseAlways<CompanyDbContext>());
+            Database.SetInitializer(new CreateDatabaseIfNotExists<CompanyDbContext>());
         }
         public DbSet<Department> Departments { get; set; }
         public DbSet<Employee> Employees { get; set; }
+       
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Employee>().MapToStoredProcedures(S => S.Insert(X => X.HasName("Employee_Insert")));
+            modelBuilder.Entity<Employee>().MapToStoredProcedures(S => S.Update(X => X.HasName("Employee_Update_Student")));
+            modelBuilder.Entity<Employee>().MapToStoredProcedures(S => S.Delete(X => X.HasName("Employee_Delete")));
+        }
 
 
-    }
+    
+
+
+
+}
 }

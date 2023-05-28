@@ -18,13 +18,11 @@ namespace MVCTaskProject.Models
 
             [Required]
             [MaxLength(100)]
-            [Column("Sname", TypeName = "Varchar")]
+            [Column("Name", TypeName = "Varchar")]
 
             public string Name { get; set; }
 
             [MaxLength(1000)]
-            [Column(TypeName = "Varchar")]
-
             public string Address { get; set; }
 
             public int DepartmentId  { get; set; }

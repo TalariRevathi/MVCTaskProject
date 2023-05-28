@@ -136,13 +136,12 @@
     <Compile Include="Models\Department.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\CompanyDbContext.cs" />
-    <Compile Include="Models\DepartmentDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App_Data\CompanyDataDb.mdf" />
-    <Content Include="App_Data\CompanyDataDb_log.ldf">
-      <DependentUpon>CompanyDataDb.mdf</DependentUpon>
+    <Content Include="App_Data\CompanyDb.mdf" />
+    <Content Include="App_Data\CompanyDb_log.ldf">
+      <DependentUpon>CompanyDb.mdf</DependentUpon>
     </Content>
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
@@ -200,6 +199,7 @@
     <Content Include="Views\Employee\DisplayEmployees.cshtml" />
     <Content Include="Views\Employee\AddEmployee.cshtml" />
     <Content Include="Views\Employee\EditEmployee.cshtml" />
+    <Content Include="Views\Employee\DisplayEmployee.cshtml" />
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
@@ -247,7 +247,7 @@
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>50088</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
-          <IISUrl>https://localhost:44312/</IISUrl>
+          <IISUrl>http://localhost:44312/</IISUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
           <UseCustomServer>False</UseCustomServer>
           <CustomServerUrl>

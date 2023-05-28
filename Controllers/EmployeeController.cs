@@ -16,17 +16,16 @@ namespace MVCTaskProject.Controllers
     {
         CompanyDbContext dc = new CompanyDbContext();
         public ViewResult DisplayEmployees()
-        {
-            dc.Configuration.LazyLoadingEnabled = false;
+        {           
             var employees = dc.Employees.Include(E => E.Department).ToList();
             return View(employees);
         }
         public ViewResult DisplayEmployee(int employeeId)
-        {
-            dc.Configuration.LazyLoadingEnabled = false;
+        {          
             Employee employee = (dc.Employees.Include(E => E.Department).Where(E => E.EmployeeId == employeeId)).Single();
             return View(employee);
         }
+        //Add Employee
         public ViewResult AddEmployee()
         {
             ViewBag.DepartmentId = new SelectList(dc.Departments, "DepartmentId", "DepartmentName");
@@ -35,7 +34,7 @@ namespace MVCTaskProject.Controllers
         }
         [HttpPost]
         public RedirectToRouteResult AddEmployee(Employee employee)
-        {           
+        {                 
             dc.Employees.Add(employee);
             dc.SaveChanges();
             return RedirectToAction("DisplayEmployees");
@@ -52,10 +51,10 @@ namespace MVCTaskProject.Controllers
             dc.SaveChanges();
             return RedirectToAction("DisplayEmployees");
         }
-        public RedirectToRouteResult DeleteProduct(int Id)
+        public RedirectToRouteResult DeleteEmployee(int employeeId)
         {
-            Employee employee = dc.Employees.Find(Id);          
-            dc.Entry(employee).State = EntityState.Modified;
+            Employee employee = dc.Employees.Find(employeeId);
+            dc.Employees.Remove(employee);
             dc.SaveChanges();
             return RedirectToAction("DisplayEmployees");
         }
